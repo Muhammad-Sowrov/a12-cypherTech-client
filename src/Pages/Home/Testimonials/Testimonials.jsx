@@ -17,7 +17,7 @@ const Testimonials = () => {
         setReview(data);
       });
   }, []);
-  console.log(review);
+  // console.log(review);
   return (
     <section className="mb-8">
       <SectionTitle heading={"Voices of Satisfaction"}></SectionTitle>

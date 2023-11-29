@@ -23,7 +23,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-black fixed z-10 bg-opacity-25 text-white">
+      <div className="navbar bg-slate-200 fixed z-10 bg-opacity-25 text-black">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,7 +31,8 @@ const Navbar = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
                 fill="none"
-                viewBox="0 0 24 24"
+                // viewBox="0 0 24 24"
+                viewBox="10 10 10 10"
                 stroke="currentColor"
               >
                 <path
