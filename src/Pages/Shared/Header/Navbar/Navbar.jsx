@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import logo from '/icon.svg'
 
 const Navbar = () => {
   const navLinks = (
@@ -45,7 +46,9 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Cypher<span className="text-rose-200">Tech</span></a>
+          <a className="btn btn-ghost text-xl">
+            <img src={logo} className="w-6 rounded-full" alt="" />
+            Cypher<span className="text-green-500">Tech</span></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="men list-none gap-5 menu-horizontal px-1">{navLinks}</ul>
