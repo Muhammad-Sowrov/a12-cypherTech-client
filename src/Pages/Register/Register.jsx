@@ -5,6 +5,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
@@ -16,46 +19,95 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log(data);
-    createUser(data.email, data.password).then((result) => {
-      console.log(result);
-      updateUserProfile(data.name, data.photoUrl).then(() => {
-        const userInfo = {
-          name: data.name,
-          email: data.email,
-          image: data.image[0],
-          role: data.role,
-          salary: data.salary,
-          bankAc: data.account,
-        };
-        axiosPublic.post("/users", userInfo).then((res) => {
-          console.log(res);
-          if (res.data.insertedId) {
-            reset();
-            Swal.fire({
-              title: "Account created successful",
-              showClass: {
-                popup: `
-                        animate__animated
-                        animate__fadeInUp
-                        animate__faster
-                      `,
-              },
-              hideClass: {
-                popup: `
-                        animate__animated
-                        animate__fadeOutDown
-                        animate__faster
-                      `,
-              },
-            });
-            navigate("/login");
-          }
+    const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
         });
-      });
-    });
+        if (res.data.success) {
+          createUser(data.email, data.password).then((result) => {
+            console.log(result);
+            updateUserProfile(data.name, data.photoUrl).then(() => {
+              const userInfo = {
+                name: data.name,
+                email: data.email,
+                image: res.data.data.display_url,
+                role: data.role,
+                salary: data.salary,
+                bankAc: data.account,
+              };
+              axiosPublic.post("/users", userInfo).then((res) => {
+                console.log(res);
+                if (res.data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    title: "Account created successful",
+                    showClass: {
+                      popup: `
+                              animate__animated
+                              animate__fadeInUp
+                              animate__faster
+                            `,
+                    },
+                    hideClass: {
+                      popup: `
+                              animate__animated
+                              animate__fadeOutDown
+                              animate__faster
+                            `,
+                    },
+                  });
+                  navigate("/login");
+                }
+              });
+            });
+          });
+          
+        }
+        console.log(res.data);
+    
+    // createUser(data.email, data.password).then((result) => {
+    //   console.log(result);
+    //   updateUserProfile(data.name, data.photoUrl).then(() => {
+    //     const userInfo = {
+    //       name: data.name,
+    //       email: data.email,
+    //       image: data.image[0],
+    //       role: data.role,
+    //       salary: data.salary,
+    //       bankAc: data.account,
+    //     };
+    //     axiosPublic.post("/users", userInfo).then((res) => {
+    //       console.log(res);
+    //       if (res.data.insertedId) {
+    //         reset();
+    //         Swal.fire({
+    //           title: "Account created successful",
+    //           showClass: {
+    //             popup: `
+    //                     animate__animated
+    //                     animate__fadeInUp
+    //                     animate__faster
+    //                   `,
+    //           },
+    //           hideClass: {
+    //             popup: `
+    //                     animate__animated
+    //                     animate__fadeOutDown
+    //                     animate__faster
+    //                   `,
+    //           },
+    //         });
+    //         navigate("/login");
+    //       }
+    //     });
+    //   });
+    // });
   };
+  
 
   return (
     <div>
@@ -94,6 +146,20 @@ const Register = () => {
                 <span className="text-red-700">Please upload an image</span>
               )}
             </div>
+            {/* <div className="mb-4">
+              <label className="block text-gray-600 text-sm font-semibold">
+                Upload Image
+              </label>
+              <input
+                {...register("image", { required: true })}
+                type="file"
+                accept="image/*"
+                className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
+              />
+              {errors.image && (
+                <span className="text-red-700">Please upload an image</span>
+              )}
+            </div> */}
             <div className="mb-4">
               <label className="block text-gray-600 text-sm font-semibold">
                 Your Role?
