@@ -1,12 +1,14 @@
-
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
-  const {createUser} = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,31 +18,43 @@ const Register = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
-      Swal.fire({
-        title: "Account created successfully",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `
-        }
+    createUser(data.email, data.password).then((result) => {
+      console.log(result);
+      updateUserProfile(data.name, data.photoUrl).then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          image: data.image[0],
+          role: data.role,
+          salary: data.salary,
+          bankAc: data.account,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          console.log(res);
+          if (res.data.insertedId) {
+            reset();
+            Swal.fire({
+              title: "Account created successful",
+              showClass: {
+                popup: `
+                        animate__animated
+                        animate__fadeInUp
+                        animate__faster
+                      `,
+              },
+              hideClass: {
+                popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                      `,
+              },
+            });
+            navigate("/login");
+          }
+        });
       });
-      reset()
-    })
-
-
+    });
   };
 
   return (
