@@ -68,44 +68,6 @@ const Register = () => {
           
         }
         console.log(res.data);
-    
-    // createUser(data.email, data.password).then((result) => {
-    //   console.log(result);
-    //   updateUserProfile(data.name, data.photoUrl).then(() => {
-    //     const userInfo = {
-    //       name: data.name,
-    //       email: data.email,
-    //       image: data.image[0],
-    //       role: data.role,
-    //       salary: data.salary,
-    //       bankAc: data.account,
-    //     };
-    //     axiosPublic.post("/users", userInfo).then((res) => {
-    //       console.log(res);
-    //       if (res.data.insertedId) {
-    //         reset();
-    //         Swal.fire({
-    //           title: "Account created successful",
-    //           showClass: {
-    //             popup: `
-    //                     animate__animated
-    //                     animate__fadeInUp
-    //                     animate__faster
-    //                   `,
-    //           },
-    //           hideClass: {
-    //             popup: `
-    //                     animate__animated
-    //                     animate__fadeOutDown
-    //                     animate__faster
-    //                   `,
-    //           },
-    //         });
-    //         navigate("/login");
-    //       }
-    //     });
-    //   });
-    // });
   };
   
 
