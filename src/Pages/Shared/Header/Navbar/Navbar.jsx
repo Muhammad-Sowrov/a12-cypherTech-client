@@ -1,7 +1,16 @@
 import { NavLink } from "react-router-dom";
 import logo from '/icon.svg'
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const {user, logOut} = useContext(AuthContext);
+  const handleOut = () => {
+    logOut()
+    .then()
+    .then()
+
+  }
   const navLinks = (
     <>
       <li>
@@ -14,11 +23,19 @@ const Navbar = () => {
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
           }>Dashboard</NavLink>
       </li>
-      <li>
+      {
+        user?.email? <li>
+        <NavLink to='/login' onClick={handleOut} className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
+          }>Log Out</NavLink>
+      </li> : <li>
         <NavLink to='/login' className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
           }>Login</NavLink>
       </li>
+      }
+
+      
     </>
   );
   return (

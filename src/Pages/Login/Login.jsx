@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -11,14 +12,34 @@ const Login = () => {
         register,
         handleSubmit,
         reset,
+        setError,
         formState: { errors },
       } = useForm();
 
       const onsubmit = data => {
+        
         console.log(data);
+
         signIn(data.email, data.password)
         .then(result => {
           console.log(result.user);
+          Swal.fire({
+            title: "Login successful",
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+          });
           reset()
         })
 
@@ -60,6 +81,7 @@ const Login = () => {
                 name="password"
                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-green-500"
                 placeholder="Password"
+                aria-invalid={errors.password ? "true" : "false"}
               />
               {errors.password?.type === "minLength" && (
                 <span className="text-red-700">

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {createUser} = useContext(AuthContext);
@@ -19,6 +20,23 @@ const Register = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      Swal.fire({
+        title: "Account created successfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
       reset()
     })
 
