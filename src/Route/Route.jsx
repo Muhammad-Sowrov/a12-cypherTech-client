@@ -35,35 +35,35 @@ const Route = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
         {
-            path: "dashboard/all-employee-list",
+            path: "all-employee-list",
             element: <AllEmployee></AllEmployee>
         },
         {
-            path: "dashboard/payment-history",
+            path: "payment-history",
             element: <PaymentHistory></PaymentHistory>
         },
         {
-            path: "dashboard/work-sheet",
+            path: "work-sheet",
             element: <WorkSheet></WorkSheet>
         },
         {
-            path: "dashboard/employee-list",
+            path: "employee-list",
             element: <Employee></Employee>
         },
         {
-            path: "dashboard/details/:slug",
+            path: "details/:slug",
             element: <Salary></Salary>
         },
         {
-            path: "dashboard/progress",
+            path: "progress",
             element: <Progress></Progress>
         },
         {
-            path: "dashboard/contact",
+            path: "contact",
             element: <Contact></Contact>
         }
     ]

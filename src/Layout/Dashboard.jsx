@@ -7,25 +7,25 @@ const Dashboard = () => {
         <ul className="menu text-white">
             {/* admin */}
           <li className="hover:font-bold text-center">
-            <NavLink to="dashboard/all-employee-list">All User</NavLink>
+            <NavLink to="all-employee-list">All User</NavLink>
           </li>
 
           {/* employee */}
           <li className="hover:font-bold">
-            <NavLink to="dashboard/payment-history">Your Payment</NavLink>
+            <NavLink to="payment-history">Your Payment</NavLink>
           </li>
           <li className="hover:font-bold">
-            <NavLink to="dashboard/work-sheet">Work Sheet</NavLink>
+            <NavLink to="work-sheet">Work Sheet</NavLink>
           </li>
           {/* HR */}
           <li className="hover:font-bold">
-            <NavLink to="dashboard/employee-list">Employee</NavLink>
+            <NavLink to="employee-list">Employee</NavLink>
           </li>
           <li className="hover:font-bold">
-            <NavLink to="dashboard/details/:slug">Employee Salary</NavLink>
+            <NavLink to="details/:slug">Employee Salary</NavLink>
           </li>
           <li className="hover:font-bold">
-            <NavLink to="dashboard/progress">Progress</NavLink>
+            <NavLink to="progress">Progress</NavLink>
           </li>
 
           {/* shared */}
@@ -34,7 +34,7 @@ const Dashboard = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li className="hover:font-bold">
-            <NavLink to="dashboard/contact">Contact</NavLink>
+            <NavLink to="contact">Contact</NavLink>
           </li>
         </ul>
       </div>
