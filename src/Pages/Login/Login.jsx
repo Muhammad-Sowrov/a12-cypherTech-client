@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Login = () => {
+    
+    const {signIn} = useContext(AuthContext);
     const {
         register,
         handleSubmit,
@@ -12,6 +16,12 @@ const Login = () => {
 
       const onsubmit = data => {
         console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+          console.log(result.user);
+          reset()
+        })
+
       }
     return (
         <div>

@@ -19,6 +19,7 @@ const Register = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      reset()
     })
 
 
