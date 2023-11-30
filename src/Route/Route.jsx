@@ -12,6 +12,7 @@ import WorkSheet from "../Pages/Dashboard/WorkSheet/WorkSheet";
 import Employee from "../Pages/Dashboard/Employee/Employee";
 import Salary from "../Pages/Dashboard/Salary/Salary";
 import Progress from "../Pages/Dashboard/Progress/Progress";
+import Contact from "../Pages/Dashboard/Contact/Contact";
 
 const Route = createBrowserRouter([
   {
@@ -38,29 +39,33 @@ const Route = createBrowserRouter([
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
         {
-            path: "/dashboard/all-employee-list",
+            path: "dashboard/all-employee-list",
             element: <AllEmployee></AllEmployee>
         },
         {
-            path: "/dashboard/payment-history",
+            path: "dashboard/payment-history",
             element: <PaymentHistory></PaymentHistory>
         },
         {
-            path: "/dashboard/work-sheet",
+            path: "dashboard/work-sheet",
             element: <WorkSheet></WorkSheet>
         },
         {
-            path: "/dashboard/employee-list",
+            path: "dashboard/employee-list",
             element: <Employee></Employee>
         },
         {
-            path: "/dashboard/details/:slug",
+            path: "dashboard/details/:slug",
             element: <Salary></Salary>
         },
         {
-            path: "/dashboard/progress",
+            path: "dashboard/progress",
             element: <Progress></Progress>
         },
+        {
+            path: "dashboard/contact",
+            element: <Contact></Contact>
+        }
     ]
   }
 ]);
