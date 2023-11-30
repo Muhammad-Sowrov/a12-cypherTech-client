@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -8,11 +8,15 @@ import Swal from "sweetalert2";
 const Login = () => {
     
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+
     const {
         register,
         handleSubmit,
         reset,
-        setError,
         formState: { errors },
       } = useForm();
 
@@ -41,6 +45,7 @@ const Login = () => {
             }
           });
           reset()
+          navigate(from, { replace: true})
         })
 
       }
