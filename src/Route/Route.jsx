@@ -12,7 +12,8 @@ import WorkSheet from "../Pages/Dashboard/WorkSheet/WorkSheet";
 import Employee from "../Pages/Dashboard/Employee/Employee";
 import Salary from "../Pages/Dashboard/Salary/Salary";
 import Progress from "../Pages/Dashboard/Progress/Progress";
-import Contact from "../Pages/Dashboard/Contact/Contact";
+import Contact from "../Pages/Contact/Contact";
+import Contacts from "../Pages/Dashboard/Contact/Contacts";
 
 const Route = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const Route = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
       }
     ],
   },
@@ -40,7 +45,7 @@ const Route = createBrowserRouter([
     children: [
         {
             path: "all-employee-list",
-            element: <AllEmployee></AllEmployee>
+            element: <PrivateRoute><AllEmployee></AllEmployee></PrivateRoute>
         },
         {
             path: "payment-history",
@@ -64,7 +69,7 @@ const Route = createBrowserRouter([
         },
         {
             path: "contact",
-            element: <Contact></Contact>
+            element: <Contacts></Contacts>
         }
     ]
   }

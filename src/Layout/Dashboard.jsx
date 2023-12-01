@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  // const isAdmin = true;
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-gray-700 text-white">

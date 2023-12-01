@@ -45,7 +45,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        // Handle specific login errors, e.g., invalid credentials
+        // Handle specific login error
         Swal.fire({
           title: "Login failed",
           text: error.message,

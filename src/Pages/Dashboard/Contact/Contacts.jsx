@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
-const Contact = () => {
+const Contacts = () => {
     const axiosPublic = useAxiosPublic();
     const [address, setAddress] = useState([]);
     axiosPublic.get('/dummy')
@@ -56,4 +56,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contacts;

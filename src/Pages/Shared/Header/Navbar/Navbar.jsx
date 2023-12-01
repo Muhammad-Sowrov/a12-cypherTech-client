@@ -23,6 +23,11 @@ const Navbar = () => {
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
           }>Dashboard</NavLink>
       </li>
+      <li>
+        <NavLink to='/contact' className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
+          }>Contact</NavLink>
+      </li>
       {
         user?.email? <li>
         <NavLink to='/login' onClick={handleOut} className={({ isActive, isPending }) =>
