@@ -92,7 +92,7 @@ const AllEmployee = () => {
   };
 
   return (
-    <div className="my-4 ml-5">
+    <div className="">
       <h3 className="text-xl font-bold">Total Users: {employee.length}</h3>
       <div>
         <div className="overflow-x-auto">

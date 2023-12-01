@@ -40,7 +40,7 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      <div>
+      <div className="w-full my-4 ml-5">
         <Outlet></Outlet>
       </div>
     </div>
