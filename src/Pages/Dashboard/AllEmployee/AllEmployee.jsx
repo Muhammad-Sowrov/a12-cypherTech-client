@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-// import { useState } from "react";
 
 const AllEmployee = () => {
   const axiosSecure = useAxiosSecure();
@@ -13,7 +12,7 @@ const AllEmployee = () => {
       return res.data;
     },
   });
-  console.log(employee);
+  // console.log(employee);
 
   const handleFired = (user) => {
     console.log(user);
