@@ -49,23 +49,23 @@ const Route = createBrowserRouter([
         },
         {
             path: "payment-history",
-            element: <PaymentHistory></PaymentHistory>
+            element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         },
         {
             path: "work-sheet",
-            element: <WorkSheet></WorkSheet>
+            element: <PrivateRoute><WorkSheet></WorkSheet></PrivateRoute>
         },
         {
             path: "employee-list",
-            element: <Employee></Employee>
+            element: <PrivateRoute><Employee></Employee></PrivateRoute>
         },
         {
             path: "details/:slug",
-            element: <Salary></Salary>
+            element: <PrivateRoute><Salary></Salary></PrivateRoute>
         },
         {
             path: "progress",
-            element: <Progress></Progress>
+            element: <PrivateRoute><Progress></Progress></PrivateRoute>
         },
         {
             path: "contact",

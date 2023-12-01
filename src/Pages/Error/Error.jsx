@@ -1,5 +1,4 @@
 
-
 const Error = () => {
     return (
         <div>
