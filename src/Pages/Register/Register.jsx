@@ -31,6 +31,7 @@ const Register = () => {
           createUser(data.email, data.password).then((result) => {
             console.log(result);
             updateUserProfile(data.name, data.photoUrl).then(() => {
+              let isVerify = false;
               const userInfo = {
                 name: data.name,
                 email: data.email,
@@ -38,6 +39,7 @@ const Register = () => {
                 role: data.role,
                 salary: data.salary,
                 bankAc: data.account,
+                isVerify,
               };
               axiosPublic.post("/users", userInfo).then((res) => {
                 console.log(res);

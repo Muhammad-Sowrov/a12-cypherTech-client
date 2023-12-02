@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaTrashAlt } from "react-icons/fa";
+import { IoCheckmark, IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
 
 const AllEmployee = () => {
@@ -12,10 +13,34 @@ const AllEmployee = () => {
       return res.data;
     },
   });
-  // console.log(employee);
+  console.log(employee);
 
   const handleFired = (user) => {
     console.log(user);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make HR!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/users/hr/${user._id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            refetch();
+          }
+        });
+
+        Swal.fire({
+          title: "Made!",
+          text: `You made ${user.name} HR.`,
+          icon: "success",
+        });
+      }
+    });
 
     Swal.fire({
       title: "Are you sure?",
@@ -104,6 +129,7 @@ const AllEmployee = () => {
                 <th className="font-bold">Name</th>
                 <th className="font-bold">Email</th>
                 <th className="font-bold">Role</th>
+                <th className="font-bold">IsVerify</th>
                 <th className="font-bold">Salary</th>
                 <th className="font-bold">Action</th>
                 <th className="font-bold">Action</th>
@@ -117,6 +143,13 @@ const AllEmployee = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.role}</td>
+                  <td>
+                    {user?.isVerify == false
+                      ? <IoClose className="text-2xl"></IoClose> :
+                        user?.isVerify ==
+                          true ? (<IoCheckmark className="text-2xl"></IoCheckmark>)
+                      : ""}
+                  </td>
                   <td>${user.salary}</td>
                   <td>
                     <button
