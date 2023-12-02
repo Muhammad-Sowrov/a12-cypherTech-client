@@ -14,6 +14,7 @@ import Salary from "../Pages/Dashboard/Salary/Salary";
 import Progress from "../Pages/Dashboard/Progress/Progress";
 import Contact from "../Pages/Contact/Contact";
 import Contacts from "../Pages/Dashboard/Contact/Contacts";
+import AdminRoute from "./AdminRoute";
 
 const Route = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const Route = createBrowserRouter([
     children: [
         {
             path: "all-employee-list",
-            element: <PrivateRoute><AllEmployee></AllEmployee></PrivateRoute>
+            element: <AdminRoute><AllEmployee></AllEmployee></AdminRoute>
         },
         {
             path: "payment-history",

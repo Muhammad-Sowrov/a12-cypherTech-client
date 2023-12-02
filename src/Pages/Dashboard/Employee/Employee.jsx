@@ -17,7 +17,6 @@ const Employee = () => {
   //   console.log(filteredUsers);
 
   const handleVerify = (data) => {
-    console.log(data);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -46,7 +45,6 @@ const Employee = () => {
 
 
   const handleUnVerify = (data) => {
-    console.log(data);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -98,25 +96,6 @@ const Employee = () => {
                 <th>{idx + 1}</th>
                 <td>{data.name}</td>
                 <td>{data.email}</td>
-                {/* <td>
-                  {data?.isVerify == false
-                    ? (
-                        <button
-                        onClick={()=>handleVerify(data)}
-                        >
-                          <IoClose className="text-2xl"></IoClose>
-                        </button>
-                      ) || 
-                      data?.isVerify == true  (
-                          <button
-                          // onClick={()=> handleVerify(data)}
-                          
-                          >
-                            <IoCheckmark className="text-2xl"></IoCheckmark>
-                          </button>
-                        )
-                    : ""}
-                </td> */}
                 <td>
                   {data?.isVerify === false ? (
                     <button onClick={() => handleVerify(data)}>
