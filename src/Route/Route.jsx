@@ -24,55 +24,83 @@ const Route = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
-      }
+        element: <Contact></Contact>,
+      },
     ],
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
-        {
-            path: "all-employee-list",
-            element: <AdminRoute><AllEmployee></AllEmployee></AdminRoute>
-        },
-        {
-            path: "payment-history",
-            element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
-        },
-        {
-            path: "work-sheet",
-            element: <PrivateRoute><WorkSheet></WorkSheet></PrivateRoute>
-        },
-        {
-            path: "employee-list",
-            element: <PrivateRoute><Employee></Employee></PrivateRoute>
-        },
-        {
-            path: "details/:slug",
-            element: <PrivateRoute><Salary></Salary></PrivateRoute>
-        },
-        {
-            path: "progress",
-            element: <PrivateRoute><Progress></Progress></PrivateRoute>
-        },
-        {
-            path: "contact",
-            element: <Contacts></Contacts>
-        }
-    ]
-  }
+      {
+        path: "all-employee-list",
+        element: (
+          <AdminRoute>
+            <AllEmployee></AllEmployee>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "payment-history",
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "work-sheet",
+        element: (
+          <PrivateRoute>
+            <WorkSheet></WorkSheet>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "employee-list",
+        element: (
+          <PrivateRoute>
+            <Employee></Employee>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "details/:slug",
+        element: (
+          <PrivateRoute>
+            <Salary></Salary>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "progress",
+        element: (
+          <PrivateRoute>
+            <Progress></Progress>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "contact",
+        element: <Contacts></Contacts>,
+      },
+    ],
+  },
 ]);
 export default Route;

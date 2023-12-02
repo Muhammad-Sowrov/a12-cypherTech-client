@@ -1,5 +1,5 @@
 const Footer = () => {
-    // bg-base-200 
+  // bg-base-200
   return (
     <footer className="footer p-10 bg-gray-700 text-white">
       <nav>

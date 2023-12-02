@@ -19,59 +19,57 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    const imageFile = { image: data.image[0] }
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-        if (res.data.success) {
-          createUser(data.email, data.password).then((result) => {
-            console.log(result);
-            updateUserProfile(data.name, data.photoUrl).then(() => {
-              let isVerify = false;
-              const userInfo = {
-                name: data.name,
-                email: data.email,
-                image: res.data.data.display_url,
-                role: data.role,
-                salary: data.salary,
-                bankAc: data.account,
-                isVerify,
-              };
-              axiosPublic.post("/users", userInfo).then((res) => {
-                console.log(res);
-                if (res.data.insertedId) {
-                  reset();
-                  Swal.fire({
-                    title: "Account created successful",
-                    showClass: {
-                      popup: `
+    const imageFile = { image: data.image[0] };
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    if (res.data.success) {
+      createUser(data.email, data.password).then((result) => {
+        console.log(result);
+        updateUserProfile(data.name, data.photoUrl).then(() => {
+          let isVerify = false;
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            image: res.data.data.display_url,
+            role: data.role,
+            salary: data.salary,
+            bankAc: data.account,
+            isVerify,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            console.log(res);
+            if (res.data.insertedId) {
+              reset();
+              Swal.fire({
+                title: "Account created successful",
+                showClass: {
+                  popup: `
                               animate__animated
                               animate__fadeInUp
                               animate__faster
                             `,
-                    },
-                    hideClass: {
-                      popup: `
+                },
+                hideClass: {
+                  popup: `
                               animate__animated
                               animate__fadeOutDown
                               animate__faster
                             `,
-                    },
-                  });
-                  navigate("/login");
-                }
+                },
               });
-            });
+              navigate("/login");
+            }
           });
-          
-        }
-        console.log(res.data);
+        });
+      });
+    }
+    console.log(res.data);
   };
-  
 
   return (
     <div>

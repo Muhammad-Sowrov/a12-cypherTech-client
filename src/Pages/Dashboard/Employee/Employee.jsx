@@ -43,7 +43,6 @@ const Employee = () => {
     });
   };
 
-
   const handleUnVerify = (data) => {
     Swal.fire({
       title: "Are you sure?",
@@ -61,7 +60,7 @@ const Employee = () => {
             refetch();
           }
         });
-  
+
         Swal.fire({
           title: "Made!",
           text: `You unverified ${data.name}`,

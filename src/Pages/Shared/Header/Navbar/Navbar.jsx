@@ -1,46 +1,69 @@
 import { NavLink } from "react-router-dom";
-import logo from '/icon.svg'
+import logo from "/icon.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const Navbar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const handleOut = () => {
-    logOut()
-    .then()
-    .then()
-
-  }
+    logOut().then().then();
+  };
   const navLinks = (
     <>
       <li>
-        <NavLink to='/' className={({ isActive, isPending }) =>
+        <NavLink
+          to="/"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
-          }>Home</NavLink>
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to='/dashboard' className={({ isActive, isPending }) =>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
-          }>Dashboard</NavLink>
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
       <li>
-        <NavLink to='/contact' className={({ isActive, isPending }) =>
+        <NavLink
+          to="/contact"
+          className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
-          }>Contact</NavLink>
+          }
+        >
+          Contact
+        </NavLink>
       </li>
-      {
-        user?.email? <li>
-        <NavLink to='/login' onClick={handleOut} className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
-          }>Log Out</NavLink>
-      </li> : <li>
-        <NavLink to='/login' className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
-          }>Login</NavLink>
-      </li>
-      }
-
-      
+      {user?.email ? (
+        <li>
+          <NavLink
+            to="/login"
+            onClick={handleOut}
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
+            }
+          >
+            Log Out
+          </NavLink>
+        </li>
+      ) : (
+        <li>
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-red-500 font-bold" : ""
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -71,10 +94,13 @@ const Navbar = () => {
           </div>
           <a className="btn btn-ghost text-xl">
             <img src={logo} className="w-6 rounded-full" alt="" />
-            Cypher<span className="text-green-500">Tech</span></a>
+            Cypher<span className="text-green-500">Tech</span>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="men list-none gap-5 menu-horizontal px-1">{navLinks}</ul>
+          <ul className="men list-none gap-5 menu-horizontal px-1">
+            {navLinks}
+          </ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Button</a>

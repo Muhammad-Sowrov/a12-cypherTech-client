@@ -90,7 +90,8 @@ const Login = () => {
                       message: "Password must be at least 6 characters",
                     },
                     pattern: {
-                      value: /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{6,}$/i,
+                      value:
+                        /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).{6,}$/i,
                       message:
                         "Password must have an uppercase, lowercase, number, and special character",
                     },

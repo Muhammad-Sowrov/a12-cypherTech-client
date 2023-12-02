@@ -11,8 +11,8 @@ const Services = () => {
         setService(data);
       });
   }, []);
-//   console.log(service);
- 
+  //   console.log(service);
+
   return (
     <div>
       <SectionTitle heading={"Service"}></SectionTitle>

@@ -48,10 +48,7 @@ const Testimonials = () => {
           <SwiperSlide key={item._id}>
             <div className="mx-10 items-center text-center font-bold">
               <div className="title" data-swiper-parallax="-300">
-                
-                <p className="font-extrabold">
-                {item.user_name}
-                </p>
+                <p className="font-extrabold">{item.user_name}</p>
               </div>
               <div className="subtitle" data-swiper-parallax="-200">
                 Rating: {item.rating}/5

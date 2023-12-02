@@ -19,13 +19,12 @@ const WorkSheet = () => {
   const { user } = useContext(AuthContext);
 
   const onSubmit = (data) => {
-
     const formData = {
       task: data.task,
       startDate: data.startDate,
       working_time: data.working_time,
       email: user.email,
-      name: user.displayName
+      name: user.displayName,
     };
     console.log(formData);
     axiosSecure.post("/work-sheet", formData).then((res) => {
