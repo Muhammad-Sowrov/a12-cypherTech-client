@@ -11,7 +11,7 @@ import { Parallax, Pagination, Navigation } from "swiper/modules";
 const Testimonials = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/testimonials")
+    fetch("https://cypher-tech-server.vercel.app/testimonials")
       .then((res) => res.json())
       .then((data) => {
         setReview(data);
